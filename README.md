@@ -1,5 +1,5 @@
-# Sample Spring Boot Application #
+# Spring Boot Web Application
+This repository has the project files for a tutorial series on Spring Boot available from by website at [Spring Framework Guru](https://springframework.guru)
 
-This sample Spring Boot application was written for a blog post describing how to create a Spring Boot application with IntelliJ.
-
-http://patrickgrimard.io/2014/08/14/how-to-build-a-spring-boot-application-using-intellij-idea/
+## Checkout the full tutorial here!
+[Spring Boot - making Spring Fun again!](https://springframework.guru/spring-boot-web-application-part-1-spring-initializr/)
