@@ -18,8 +18,9 @@ node {
       archive 'target/*.jar'
    }
    stage ('Deploy') {
+       sh "sudo docker stop myspringapp"
        sh "sudo docker build -t rajapp ."
-       sh "sudo docker run --rm -d -p 8182:8182 rajapp "
+       sh "sudo docker run --name myspringapp --rm -d -p 8182:8182  rajapp "
    }
    stage ('Smoke Test') {
        sh " chmod 755 Smoketest.sh"
