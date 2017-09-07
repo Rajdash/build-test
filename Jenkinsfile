@@ -29,9 +29,9 @@ node {
         changed {
             script {
                 if (currentBuild.currentResult == 'FAILURE') { 
-                   emailext subject: 'Build failed  ${env.BUILD_URL} , ${env.BUILD_NUMBER}',
+                   emailext subject: 'Build failed  ${env.BUILD_URL} , ${env.BUILD_NUMBER}'
                         body: 'Build Failed Please check'
-                        replyTo: 'noReply@gmail.com,
+                        replyTo: 'noReply@gmail.com'
                         to: 'raj.ranjan1989@gmail.com'
                 }
             }
