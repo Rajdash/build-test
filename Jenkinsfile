@@ -27,8 +27,7 @@ node {
        sh " sleep 40 "
        sh "./Smoketest.sh"
    }
-   post {
-    failure {
+   post('failure'){
         mail to: 'raj.ranjan1989@gmail.com',
              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Something is wrong with ${env.BUILD_URL}"
