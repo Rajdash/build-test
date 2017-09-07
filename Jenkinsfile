@@ -1,15 +1,12 @@
 node {
    def mvnHome
-   stage('Preparation') { // for display purposes
-      // Get some code from a GitHub repository
+   stage('Preparation') { 
       git 'https://github.com/Rajdash/build-test'
-      // Get the Maven tool.
-      // ** NOTE: This 'M3' Maven tool must be configured
-      // **       in the global configuration.           
+               
       mvnHome = tool 'M3'
    }
    stage('Build') {
-      // Run the maven build
+    
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
       } else {
@@ -24,4 +21,20 @@ node {
        sh "sudo docker build -t rajapp ."
        sh "sudo docker run --rm -d -p 8182:8182 rajapp "
    }
+   stage ('Smoke Test') {
+       sh "./Smoketest.sh
+   }
+   post {
+        changed {
+            script {
+                if (currentBuild.currentResult == 'FAILURE') { 
+                   emailext subject: 'Build failed  ${env.BUILD_URL} , ${env.BUILD_NUMBER}',
+                        body: 'Build Failed Please check'
+                        replyTo: 'noReply@gmail.com,
+                        to: 'raj.ranjan1989@gmail.com'
+                }
+            }
+        }
+   }
+       
 }
