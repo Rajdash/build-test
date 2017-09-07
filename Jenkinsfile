@@ -22,8 +22,8 @@ node {
        sh "sudo docker run --rm -d -p 8182:8182 rajapp "
    }
    stage ('Smoke Test') {
-       sh " chmod 755 Smoketest.sh
-       sh "./Smoketest.sh
+       sh " chmod 755 Smoketest.sh"
+       sh "./Smoketest.sh"
    }
    post {
         changed {
