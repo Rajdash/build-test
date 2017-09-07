@@ -26,16 +26,13 @@ node {
        sh "./Smoketest.sh"
    }
    post {
-        changed {
-            script {
-                if (currentBuild.currentResult == 'FAILURE') { 
-                   emailext subject: 'Build failed  ${env.BUILD_URL} , ${env.BUILD_NUMBER}'
-                        body: 'Build Failed Please check'
-                        replyTo: 'noReply@gmail.com'
-                        to: 'raj.ranjan1989@gmail.com'
-                }
+      post {
+    failure {
+        mail to: 'raj.ranjan1989@gmail.com',
+             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
             }
-        }
-   }
+          }
+       }
        
 }
