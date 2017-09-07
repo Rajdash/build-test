@@ -23,6 +23,7 @@ node {
    }
    stage ('Smoke Test') {
        sh " chmod 755 Smoketest.sh"
+       sh " sleep 40 "
        sh "./Smoketest.sh"
    }
    post {
